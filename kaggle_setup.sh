@@ -9,6 +9,9 @@ set -euo pipefail
 #   %cd samu
 #   !bash kaggle_setup.sh
 
+# Auto-accept GitHub SSH host key (Kaggle doesn't have it in known_hosts)
+export GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=accept-new"
+
 echo "==> Installing sam-audio and dependencies..."
 pip install -q git+https://github.com/facebookresearch/sam-audio.git
 

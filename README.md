@@ -135,7 +135,7 @@ Go to Add-ons > Secrets in the notebook sidebar and add a secret named `HF_TOKEN
 
 ```python
 # Cell 1: Clone the repo and install dependencies
-!git clone https://github.com/YOUR_USER/samu.git
+!GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=accept-new" git clone https://github.com/YOUR_USER/samu.git
 %cd samu
 !bash kaggle_setup.sh
 

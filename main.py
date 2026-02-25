@@ -2,8 +2,11 @@ from __future__ import annotations
 
 import argparse
 import logging
+import os
 import sys
 from pathlib import Path
+
+from dotenv import load_dotenv
 
 from separator import AUDIO_EXTENSIONS, AudioSeparator
 
@@ -82,12 +85,19 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main() -> None:
+    load_dotenv()
     args = build_parser().parse_args()
 
     logging.basicConfig(
         level=logging.DEBUG if args.verbose else logging.INFO,
         format="%(levelname)s: %(message)s",
     )
+
+    if not os.environ.get("HF_TOKEN"):
+        logging.warning(
+            "HF_TOKEN not set. Copy .env.sample to .env and add your token, "
+            "or run: huggingface-cli login"
+        )
 
     files = collect_audio_files(args.input)
     logging.info(

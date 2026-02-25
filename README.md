@@ -17,16 +17,17 @@ SAM-Audio model checkpoints are gated. You need to:
 
 1. Request access at [facebook/sam-audio-base](https://huggingface.co/facebook/sam-audio-base) (or the small/large variant you plan to use)
 2. Generate a token at [huggingface.co/settings/tokens](https://huggingface.co/settings/tokens)
-3. Authenticate:
+3. Set up your token:
+
+```bash
+cp .env.sample .env
+# Edit .env and paste your token
+```
+
+Or authenticate via the CLI instead:
 
 ```bash
 huggingface-cli login
-```
-
-Or set the environment variable:
-
-```bash
-export HF_TOKEN=hf_your_token_here
 ```
 
 ### 2. Install dependencies

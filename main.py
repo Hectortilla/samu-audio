@@ -130,3 +130,5 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+# uv run python main.py /path/to/bird_audio.wav -d "bird singing" -m base -o ./output/ -v

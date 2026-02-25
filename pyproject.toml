@@ -1,7 +1,3 @@
-[build-system]
-requires = ["setuptools>=61.0"]
-build-backend = "setuptools.build_meta"
-
 [project]
 name = "samu"
 version = "0.1.0"
@@ -14,10 +10,15 @@ dependencies = [
     "soundfile>=0.12.0",
     "huggingface-hub>=0.20.0",
     "numpy>=1.24.0,<2.0",
+    "sam-audio",
 ]
 
-[project.scripts]
-samu = "main:main"
+[tool.uv]
+package = false
+override-dependencies = [
+    "decord==0.6.0; sys_platform == 'linux'",
+    "xformers; sys_platform == 'linux'",
+]
 
-[tool.setuptools]
-py-modules = ["main", "separator"]
+[tool.uv.sources]
+sam-audio = { git = "https://github.com/facebookresearch/sam-audio.git" }

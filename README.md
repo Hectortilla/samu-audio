@@ -31,15 +31,9 @@ export HF_TOKEN=hf_your_token_here
 
 ### 2. Install dependencies
 
-SAM-Audio depends on several Facebook Research packages that must be compiled from source.
-The setup script installs them one at a time to avoid running out of memory during compilation:
-
 ```bash
-./setup.sh
+uv sync
 ```
-
-This runs `uv sync` for the lightweight deps, then installs ImageBind, dacvae, CLAP,
-perception_models, and sam-audio sequentially with `MAX_JOBS=1`.
 
 ## Usage
 
@@ -48,37 +42,37 @@ perception_models, and sam-audio sequentially with `MAX_JOBS=1`.
 Separate bird sounds from a single file:
 
 ```bash
-uv run samu recording.wav
+uv run python main.py recording.wav
 ```
 
 Process a directory of audio files:
 
 ```bash
-uv run samu ./recordings/ -o ./clean_birds/
+uv run python main.py ./recordings/ -o ./clean_birds/
 ```
 
 Custom text prompt and model size:
 
 ```bash
-uv run samu recording.wav -d "bird singing" -m large -o ./output/
+uv run python main.py recording.wav -d "bird singing" -m large -o ./output/
 ```
 
 Skip saving the residual (non-bird) audio:
 
 ```bash
-uv run samu recording.wav --no-residual
+uv run python main.py recording.wav --no-residual
 ```
 
 Higher quality with more reranking candidates (slower):
 
 ```bash
-uv run samu recording.wav --reranking-candidates 8
+uv run python main.py recording.wav --reranking-candidates 8
 ```
 
 All options:
 
 ```
-usage: samu [-h] [-o OUTPUT_DIR] [-d DESCRIPTION] [-m {small,base,large}]
+usage: main.py [-h] [-o OUTPUT_DIR] [-d DESCRIPTION] [-m {small,base,large}]
             [--device DEVICE] [--no-residual]
             [--predict-spans | --no-predict-spans]
             [--reranking-candidates N] [-v]

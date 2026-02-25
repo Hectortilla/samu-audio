@@ -18,4 +18,7 @@ pip install -q git+https://github.com/facebookresearch/sam-audio.git
 echo "==> Installing project dependencies..."
 pip install -q python-dotenv soundfile
 
+echo "==> Fixing version conflicts with Kaggle environment..."
+pip install -q --upgrade "protobuf>=3.20.3" "numpy>=1.24.0,<2.0"
+
 echo "==> Done. Run: python main.py /kaggle/input/YOUR_DATASET/ -o /kaggle/working/output -v"

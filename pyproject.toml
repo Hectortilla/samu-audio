@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "samu"
+version = "0.1.0"
+description = "Isolate bird sounds from audio files using Meta's SAM-Audio model"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "torch>=2.0.0",
+    "torchaudio>=2.0.0",
+    "soundfile>=0.12.0",
+    "huggingface-hub>=0.20.0",
+    "numpy>=1.24.0,<2.0",
+]
+
+[project.scripts]
+samu = "main:main"
+
+[tool.setuptools]
+py-modules = ["main", "separator"]

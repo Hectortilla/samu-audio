@@ -29,7 +29,7 @@ pip install -q --no-deps "git+https://github.com/facebookresearch/perception_mod
 
 echo "==> Step 3/3: Installing remaining dependencies..."
 pip install -q --no-deps descript-audiotools argbind
-pip install -q python-dotenv soundfile einops safetensors torchdiffeq \
+pip install -q xformers python-dotenv soundfile einops safetensors torchdiffeq \
     sentencepiece ftfy regex scipy scikit-learn timm pytorchvideo pydub
 
 echo "==> Done. Run: python main.py /kaggle/input/YOUR_DATASET/ -o /kaggle/working/output -v"

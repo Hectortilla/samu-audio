@@ -117,6 +117,39 @@ For each input file, two files are written to the output directory:
 - `<name>_target.wav` -- the isolated target sound (e.g. birds)
 - `<name>_residual.wav` -- everything else (noise, other animals, etc.)
 
+## Running on Kaggle
+
+Kaggle provides free GPU instances with PyTorch pre-installed, making it the easiest way to run samu without local GPU hardware.
+
+### 1. Create a new Kaggle notebook
+
+- Go to [kaggle.com/code](https://www.kaggle.com/code) and create a new notebook
+- Under Settings, enable **Internet** access and select a **GPU** accelerator
+- Add your audio files as a Kaggle Dataset (or use an existing one)
+
+### 2. Set up your HuggingFace token
+
+Go to Add-ons > Secrets in the notebook sidebar and add a secret named `HF_TOKEN` with your token value.
+
+### 3. Clone, install, and run
+
+```python
+# Cell 1: Clone the repo and install dependencies
+!git clone https://github.com/YOUR_USER/samu.git
+%cd samu
+!bash kaggle_setup.sh
+
+# Cell 2: Load HF token from Kaggle Secrets
+from kaggle_secrets import UserSecretsClient
+import os
+os.environ["HF_TOKEN"] = UserSecretsClient().get_secret("HF_TOKEN")
+
+# Cell 3: Run on your audio files
+!python main.py /kaggle/input/your-dataset/ -o /kaggle/working/output -m base -v
+```
+
+Output files will be in `/kaggle/working/output/` and can be downloaded from the notebook's Output tab.
+
 ## Models
 
 | Model | Quality | Speed | VRAM |

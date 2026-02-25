@@ -19,6 +19,6 @@ echo "==> Installing project dependencies..."
 pip install -q python-dotenv soundfile
 
 echo "==> Fixing version conflicts with Kaggle environment..."
-pip install -q --upgrade "protobuf>=3.20.3" "numpy>=1.24.0,<2.0"
+pip install -q "huggingface-hub>=0.20.0,<1.0.0" "protobuf>=3.20.3" "numpy>=1.24.0,<2.0"
 
 echo "==> Done. Run: python main.py /kaggle/input/YOUR_DATASET/ -o /kaggle/working/output -v"

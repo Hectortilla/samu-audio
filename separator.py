@@ -88,7 +88,7 @@ class AudioSeparator:
         wav = self._load_audio(input_path)
 
         inputs = self.processor(
-            audios=[wav.numpy()],
+            audios=[str(input_path)],
             descriptions=[description],
         )
         if hasattr(inputs, "to"):
